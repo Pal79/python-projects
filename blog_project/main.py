@@ -1,10 +1,18 @@
 from flask import Flask, render_template
+import requests
+
+API_ENDPOINT = "https://api.npoint.io/eb6cd8a5d783f501ee7d"
+posts = requests.get(API_ENDPOINT).json()
+
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template(
+        "index.html",
+        all_post=posts
+    )
 
 @app.route("/about")
 def about():
