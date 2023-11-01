@@ -10,8 +10,12 @@
     	    <!-- This is where our form will go. -->
 			<form action="{{ url_for('login') }}" method="post">
 				{{ form.csrf_token }}
-				{{ form.email.label }} {{ form.email(size=30) }}
-				{{ form.password.label }} {{ form.password(size=30) }}
+				<p>
+					{{ form.email.label }} <br/> {{ form.email(size=30) }}
+				</p>
+				<p>
+					{{ form.password.label }} <br/> {{ form.password(size=30) }}
+				</p>
 				<input type="submit" value="Log in">
 			</form>
         </div>
