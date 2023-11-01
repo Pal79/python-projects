@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, SubmitField
 
 '''
 Red underlines? Install the required packages first: 
@@ -17,6 +17,7 @@ This will install the packages from requirements.txt for this project.
 class LoginForm(FlaskForm):
     email = StringField(label='Email')
     password = PasswordField(label='Password')
+    submit = SubmitField(label="Log in")
 
 app = Flask(__name__)
 app.secret_key = "ez egy titok"
