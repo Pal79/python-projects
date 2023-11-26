@@ -3,6 +3,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 
+OWN_EMAIL = "pal.daniel.79@gmail.com"
+OWN_PASSWORD = "abc123"
+
 '''
 Red underlines? Install the required packages first: 
 Open the Terminal in PyCharm (bottom left). 
@@ -32,7 +35,11 @@ def home():
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
-        print(login_form.email.data)
+        #print(login_form.email.data)
+        if login_form.email.data == OWN_EMAIL and login_form.password.data == OWN_PASSWORD:
+            return render_template("success.html")
+        else:
+            return render_template("denied.html")
     return render_template(
         "login.html",
         form=login_form
