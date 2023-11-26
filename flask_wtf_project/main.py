@@ -16,8 +16,8 @@ pip3 install -r requirements.txt
 This will install the packages from requirements.txt for this project.
 '''
 class LoginForm(FlaskForm):
-    email = StringField(label='Email')
-    password = PasswordField(label='Password')
+    email = StringField(label='Email', validators=[DataRequired()])
+    password = PasswordField(label='Password', validators=[DataRequired()])
     submit = SubmitField(label="Log in")
 
 app = Flask(__name__)
@@ -31,7 +31,8 @@ def home():
 @app.route("/login", methods=["GET","POST"])
 def login():
     login_form = LoginForm()
-    login_form.validate_on_submit()
+    if login_form.validate_on_submit():
+        print(login_form.email.data)
     return render_template(
         "login.html",
         form=login_form
