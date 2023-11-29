@@ -26,6 +26,7 @@ class LoginForm(FlaskForm):
 
 app = Flask(__name__)
 app.secret_key = "ez egy titok"
+bootstrap = Bootstrap5(app) # bootstrap-flask inicializálása
 
 
 @app.route("/")
