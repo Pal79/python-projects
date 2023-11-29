@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+from flask_bootstrap import Bootstrap5
 
 OWN_EMAIL = "pal.daniel.79@gmail.com"
 OWN_PASSWORD = "abc123"
