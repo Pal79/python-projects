@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, Length #pip install email-validator
-from flask_bootstrap import Bootstrap4 # pip install bootstrap-flask
+from flask_bootstrap import Bootstrap5 # pip install bootstrap-flask
 
 OWN_EMAIL = "pal.daniel.79@gmail.com"
 OWN_PASSWORD = "abc123"
@@ -26,7 +26,7 @@ class LoginForm(FlaskForm):
 
 app = Flask(__name__)
 app.secret_key = "ez egy titok"
-bootstrap = Bootstrap4(app) # bootstrap-flask inicializálása
+bootstrap = Bootstrap5(app) # bootstrap-flask inicializálása
 
 
 @app.route("/")
