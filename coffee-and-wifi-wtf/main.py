@@ -1,8 +1,8 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField, SelectField
+from wtforms.validators import DataRequired, URL
 import csv
 
 '''
@@ -24,7 +24,59 @@ Bootstrap5(app)
 
 
 class CafeForm(FlaskForm):
-    cafe = StringField('Cafe name', validators=[DataRequired()])
+    cafe = StringField(
+        label='Cafe name',
+        validators=[DataRequired()]
+    )
+    location = StringField(
+        label="Cafe Location on Google Maps",
+        validators=[
+            DataRequired(),
+            URL()]
+    )
+    open = StringField(
+        label="Opening Time e.g.: 8AM",
+        validators=[DataRequired()]
+    )
+    close = StringField(
+        label="Closing Time e.g.: 6:30PM",
+        validators=[DataRequired()]
+    )
+    coffee_rating = SelectField(
+        label="Coffee rating",
+        choices=[
+            "☕️",
+            "☕️☕️",
+            "☕️☕️☕️",
+            "☕️☕️☕️☕️",
+            "☕️☕️☕️☕️☕️"
+        ],
+        validators=[DataRequired()]
+    )
+    wifi_rating = SelectField(
+        label="Wifi Strength Rating",
+        choices=[
+            "✘",
+            "💪",
+            "💪💪",
+            "💪💪💪",
+            "💪💪💪💪",
+            "💪💪💪💪💪"
+        ],
+        validators=[DataRequired()]
+    )
+    power_rating = SelectField(
+        label="Power Strngth Rating",
+        choices=[
+            "✘",
+            "🔌",
+            "🔌🔌",
+            "🔌🔌🔌",
+            "🔌🔌🔌🔌",
+            "🔌🔌🔌🔌🔌"
+        ],
+        validators=[DataRequired()]
+    )
     submit = SubmitField('Submit')
 
 # Exercise:
@@ -48,6 +100,7 @@ def add_cafe():
     if form.validate_on_submit():
         with open("./cafe-data.csv", mode="a", encoding="utf-8") as file:
             file.write(f"\n{form.cafe.data},"
+                       f"{form.location.data}"
                        f"{form.open.data},"
                        f"{form.close.data},"
                        f"{form.coffee_rating.data},"
