@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import sqlite3
 
 '''
 Red underlines? Install the required packages first: 
@@ -16,7 +17,7 @@ This will install the packages from requirements.txt for this project.
 app = Flask(__name__)
 
 all_books = []
-
+db = sqlite3.connect("books-collection.db")
 
 @app.route('/')
 def home():
