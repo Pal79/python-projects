@@ -37,9 +37,14 @@ class Movies(db.Model):
     review = db.Column(db.String(250), nullable=False)
     img_url =  db.Column(db.String(250), nullable=False)
 
+with app.app_context():
+    db.create_all()
+
 @app.route("/")
 def home():
-    return render_template("index.html")
+    result = db.session.execute(db.select(Movies))
+    all_movies = result.scalars()
+    return render_template("index.html", movies=all_movies)
 
 
 if __name__ == '__main__':
