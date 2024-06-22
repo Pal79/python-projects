@@ -14,7 +14,7 @@ while play:
     if choice == "new":
         too_low = "A megadott szám túl kicsi. Próbáld újra!"
         too_high = "A megadott szám túl magas. Próbáld újra!"
-        congrat = "Nagyon szuper! Eltaláltad! Próbálozásaid száma: "
+        congrat = "Nagyon szuper! Eltaláltad! Próbálkozásaid száma: "
         serious = "Ez most komoly? Ezt a számot már próbáltad."
         
         print("Válaszd ki, mely számok között szeretnél találgatni:")
